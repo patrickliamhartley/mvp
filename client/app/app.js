@@ -1,9 +1,10 @@
-angular.module('app', ['ngRoute'])
-  .config(['$routeProvider', function ($routeProvider) {
+angular.module('app', ['ngRoute',
+  'app.home'])
+  .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: '/home.html',
+      .when('/home', {
+        templateUrl: 'app/home/home.html',
         controller: 'HomeController'
       });
   }
-]);
+);
