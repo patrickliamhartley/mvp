@@ -1,7 +1,7 @@
 <div ng-model ="app.home">
   <h1 ng-controller="HomeController">BONESTORM II</h1>
   <p>WHAT IS YOUR NAME WEARY TRAVELER?</p>
-  <input type="text" name="name"></input>
-
+  <input ng-model = "name" type="text" name="name"></input>
+  <button ng-click= "add(name)" >I AM READY TO FIGHT</button>
 
 </div>
