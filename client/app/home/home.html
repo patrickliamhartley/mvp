@@ -2,6 +2,12 @@
   <h1 ng-controller="HomeController">BONESTORM II</h1>
   <p>WHAT IS YOUR NAME WEARY TRAVELER?</p>
   <input ng-model = "name" type="text" name="name"></input>
+  <select ng-model="difficulty">
+    <option value="3">SQUIRE'S FROLIC</option>
+    <option value="6">ADVENTURER'S CHALLENGE</option>
+    <option value="10">KNIGHT'S EPIC QUEST</option>
+    <option value="20">DARKEST DEPTHTS OF HELL</option>
+  </select>
   <button ng-click= "add(name)" >I AM READY TO FIGHT</button>
 
 </div>

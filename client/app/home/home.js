@@ -3,8 +3,9 @@ angular.module('app.home',[])
     
     $scope.add = function(val) {
       $rootScope.name = val;
+      $rootScope.difficulty=$scope.difficulty;
 
-      console.log($rootScope.name);
+      console.log($rootScope.name, $rootScope.difficulty);
       $location.path('/battlefield').replace();
     };
   }]);    
