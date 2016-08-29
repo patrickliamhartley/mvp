@@ -1,7 +1,13 @@
 <div ng-model ="app.battlefield">
   <h1 ng-controller="BattlefieldController">BONESTORM II</h1>
   <p>PREPARE FOR BATTLE!</p>
+
+  <div>
+    <image id="enemy" src="/../../images/enemy.png"/>
+  </div>
   
-  <div id="hero"></div>
+  <div id="heroName" ng-init="showName()">{{name}}</div>
+
+  <image id="hero" src="/../../images/hero.png">
 
 </div>
