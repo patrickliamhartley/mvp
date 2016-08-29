@@ -1,5 +1,5 @@
 angular.module('app.battlefield', [])
-  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
+  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout,key) {
     $scope.gold = 0;
     $scope.enemies = $rootScope.enemies;
 
@@ -23,8 +23,10 @@ angular.module('app.battlefield', [])
       }, 5000);
     };
 
-    $scope.kill = function () {
-      $scope.hidden = true;
+    $scope.kill = function (key) {
+      key.hidden=true;
+      console.log("index");
+      
       $scope.gold++;
       console.log($scope.enemies);
     };
