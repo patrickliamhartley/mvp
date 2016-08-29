@@ -1,6 +1,7 @@
 angular.module('app.battlefield',[])
   .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
     $scope.gold=0;
+    $scope.enemies= $rootScope.enemies;
 
     $scope.showName = function() {
       $scope.name = $rootScope.name;

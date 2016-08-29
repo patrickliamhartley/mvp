@@ -2,7 +2,7 @@
   <h1 ng-controller="BattlefieldController">BONESTORM II</h1>
   <p>PREPARE FOR BATTLE!</p>
 
-  <div  ng-hide="hidden" ng-click="kill()" ng-init="fade()">
+  <div ng-repeat="key in enemies track by $index" ng-hide="hidden" ng-click="kill()" ng-init="fade()">
     <image id="enemy" src="/../../images/enemy.png"/>
   </div>
 
