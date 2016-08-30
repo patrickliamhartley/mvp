@@ -1,7 +1,7 @@
 <div ng-model ="app.battlefield" ng-controller="BattlefieldController"  ng-init="place()">
 
   <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-repeat="key in enemies track by $index"  ng-click="kill($index)" >
-    <image  id="enemy" style="width:{{enemySize}}px;" src="/../../images/walkskel.gif"/>
+    <image  id="enemy" style="width:{{enemySize}}px;" src="{{key.url}}"/>
   </div>
 
 

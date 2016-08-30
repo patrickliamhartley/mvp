@@ -12,6 +12,9 @@ angular.module('app.battlefield', [])
         $scope.enemies[i].x = Math.random() * $rootScope.width;
         $scope.enemies[i].y = Math.random() * $rootScope.height;
         $scope.enemies[i].time = Math.random() * $rootScope.waveTimer;
+        $scope.enemies[i].alive=true;
+        $scope.enemies[i].url="/../../images/walkskel.gif";
+        $scope.fade(i, $scope.enemies[i].time,$scope.enemies[i].x);
       }
 
     };
@@ -25,14 +28,21 @@ angular.module('app.battlefield', [])
     //   console.log($rootScope.name);
     };
 
-    $scope.fade = function(index, time) {
-      
-      $timeout(function () {
-        console.log("settimeout",$scope.enemies[index]);
-        if ($scope.enemies[index]) {
-          console.log("index",index,"exploding");
-          $scope.enemies.splice(index, 1);
+
+
+    $scope.fade = function(index, time,x) {
+
+      $timeout(function ($scope) {
+    
+        if ($scope.enemies[index].x === x) {
+
           $rootScope.health = $rootScope.health - 1;
+          $scope.enemies[index].url = "/../../images/explodeOnce.gif";
+          $timeout(function ($scope) {
+            if ($scope.enemies[index].x === x) {
+              $scope.enemies.splice(index, 1);
+            }
+          }, 500);
           
         }
 
@@ -49,15 +59,23 @@ angular.module('app.battlefield', [])
     };
 
     $scope.kill = function (index) {
-      var x =$scope.enemies[index].x;
-      var y =$scope.enemies[index].y;
-      console.log(x,y);
-      $scope.once(x,y,'/../../images/bop.gif');
+      // var x =$scope.enemies[index].x;
+      // var y =$scope.enemies[index].y;
+      // console.log(x,y);
+      // $scope.once(x,y,'/../../images/bop.gif');
+      $scope.enemies[index].url = "/../../images/bop.gif";
+      if ($scope.enemies[index].alive) {
+        $scope.gold++;
+      }
+      $scope.enemies[index].alive = false;
+      $timeout(function () {
+        $scope.enemies.splice(index, 1);
 
-      $scope.enemies.splice(index, 1);
+      }, 500);
+
+
       console.log("killenemies",$scope.enemies);
       
-      $scope.gold++;
       
     };
 
@@ -69,7 +87,8 @@ angular.module('app.battlefield', [])
         $scope.enemies.push({
           x: null,
           y: null,
-          time: null
+          time: null,
+
         });
       }
       $scope.place();
@@ -77,10 +96,11 @@ angular.module('app.battlefield', [])
       console.log("placing");
     }, $rootScope.waveTimer * 1000);
 
-    $scope.$on('refresh', function () {
-      for (var i = 0; i < $scope.enemies.length; i ++) {
-        $scope.fade(i, $scope.enemies[i].time);
-      }  
-    });
+    // $scope.$on('refresh', function () {
+    //   console.log("refresh",$scope.enemies.length);
+    //   for (var i = 0; i < $scope.enemies.length; i ++) {
+    //     $scope.fade(i, $scope.enemies[i].time);
+    //   }  
+    // });
     
   }]);  
