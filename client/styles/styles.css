@@ -90,7 +90,8 @@ body{
   z-index: -100;
   margin-left: auto;
   margin-right: auto;
-  width:100px;
+  height: 150px;
+  width:150px;
 }
 #enemy{
   position: absolute;
@@ -111,9 +112,53 @@ body{
   background-image: url("/../images/door.png");
   background-size: cover;
 }
+
+#swordskull{
+  width: 400px;
+  bottom:10px;
+  position: absolute;
+  left:400px;
+}
+
+#gameover{
+  top:50px;
+  position: relative;
+  z-index: 100;
+  color:white;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+#reaperR{
+  position: absolute;
+  right:100px;
+  bottom:100px;
+  width: 300px;
+}
+
+#reaperL{
+  position: absolute;
+  left:100px;
+  bottom:100px;
+  width: 300px;
+}
+
+
+#game{
+  font-size: 40px;
+
+}
 .intro{
   text-align: center;
   font-size: 22px;
+}
+
+.go{
+  text-align: center;
+  font-size: 30px
+
 }
 
 .a{
