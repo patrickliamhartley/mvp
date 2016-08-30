@@ -1,5 +1,7 @@
 angular.module('app.battlefield', [])
   .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', function ($scope, $rootScope, $timeout, $interval, key) {
+    $rootScope.backgroundImg = "url(/../../images/graveyard.gif)";
+
     $scope.gold = 0;
     $scope.enemies = $rootScope.enemies;
     $scope.difficulty = $rootScope.difficulty;

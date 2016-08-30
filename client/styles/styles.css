@@ -1,3 +1,26 @@
+@font-face {
+  font-family:Pixel Azure Bonds;
+  src: url(/../images/paz.otf) format("opentype");
+}
+
+body{
+  font-family:Pixel Azure Bonds;
+
+  background-size: cover;
+}
+
+#banner{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px
+}
+
+
+#nameIn{
+  font-family: Pixel Azure Bonds;
+  size:24px;
+}
+
 #enemy{
   width: 50px
 }
