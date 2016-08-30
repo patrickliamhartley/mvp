@@ -36,12 +36,24 @@ angular.module('app.battlefield', [])
       
     };
 
+    $scope.once= function(x,y,imgPath){
+      var p = angular.element("<img id=zap style=top:"+y+"; left:"+x+" src="+imgPath+">")[0]; // now it's node
+      document.body.appendChild(p);
+      
+
+    };
+
     $scope.kill = function (index) {
+      var x =$scope.enemies[index].x;
+      var y =$scope.enemies[index].y;
+      console.log(x,y);
+      $scope.once(x,y,'/../../images/bop.gif');
+
       $scope.enemies.splice(index, 1);
       console.log("index");
       
       $scope.gold++;
-      console.log($scope.enemies);
+      
     };
 
     $interval(function () {

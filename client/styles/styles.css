@@ -73,6 +73,10 @@ body{
 
 }
 
+#zap{
+  position: absolute;
+}
+
 #hero{
   z-index: -100;
   display: block;
