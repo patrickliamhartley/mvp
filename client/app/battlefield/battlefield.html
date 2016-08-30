@@ -2,7 +2,7 @@
   <h1 >BONESTORM II</h1>
   <p>PREPARE FOR BATTLE!</p>
 
-  <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-init="fade(key,key.time)" ng-repeat="key in enemies track by $index" ng-hide="key.hidden"  ng-click="kill(key)" >
+  <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-repeat="key in enemies track by $index"  ng-click="kill($index)" >
     <image  id="enemy" src="/../../images/enemy.png"/>
   </div>
 
@@ -12,6 +12,7 @@
 
   <image id="hero" src="/../../images/hero.png">
   <div>
-    <p>YOUR GOLD:{{gold}}</p>
+    <p>YOUR GOLD: {{gold}}</p>
+    <p>YOUR HEALTH: {{health}}</p>
   </div>
 </div>

@@ -3,14 +3,14 @@ angular.module('app.battlefield', [])
     $scope.gold = 0;
     $scope.enemies = $rootScope.enemies;
     $scope.difficulty = $rootScope.difficulty;
+    $scope.health = $rootScope.health;
 
     $scope.place = function () {
       for (var i = 0; i < $rootScope.difficulty; i ++) {
         $scope.enemies[i].x = Math.random() * $rootScope.width;
         $scope.enemies[i].y = Math.random() * $rootScope.height;
-        $scope.enemies[i].time = Math.random() * 5;
+        $scope.enemies[i].time = Math.random() * $rootScope.waveTimer;
       }
-      $scope.$emit('refresh');
 
     };
 
@@ -19,25 +19,33 @@ angular.module('app.battlefield', [])
     //   console.log($rootScope.name);
     };
 
-    $scope.fade = function(key, time) {
+    $scope.fade = function(index, time) {
       
       $timeout(function () {
-        key.hidden = true;
-      }, time*1000);
+        console.log("settimeout",$scope.enemies[index]);
+        if ($scope.enemies[index]) {
+          console.log("exploding");
+          $scope.enemies.splice(index, 1);
+          $scope.health = $scope.health - 1;
+        }
+
+      }, (2 + time) * 1000);
+
       
     };
 
-    $scope.kill = function (key) {
-      key.hidden=true;
+    $scope.kill = function (index) {
+      $scope.enemies.splice(index, 1);
       console.log("index");
       
       $scope.gold++;
       console.log($scope.enemies);
     };
 
-    $interval(function (){
-
-      $scope.enemies= [];
+    $interval(function () {
+     
+      $scope.health= $scope.health - $scope.enemies.length;
+      $scope.enemies = [];
       for (var i = 0; i < $scope.difficulty; i ++) {
         $scope.enemies.push({
           x: null,
@@ -46,12 +54,13 @@ angular.module('app.battlefield', [])
         });
       }
       $scope.place();
+      $scope.$emit('refresh');
       console.log("placing");
-    }, 5000);
+    }, $rootScope.waveTimer * 1000);
 
     $scope.$on('refresh', function () {
-      for (var i = 0; i < $scope.difficulty; i ++) {
-        $scope.fade($scope.enemies[i],$scope.enemies[i].time);
+      for (var i = 0; i < $scope.enemies.length; i ++) {
+        $scope.fade(i, $scope.enemies[i].time);
       }  
     });
     
