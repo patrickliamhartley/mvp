@@ -1,8 +1,8 @@
 angular.module('app.battlefield', [])
-  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', '$location', function ($scope, $rootScope, $timeout, $interval, key, $location) {
+  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', '$location', function ($scope, $rootScope, $timeout, $interval, $location, key) {
     $rootScope.backgroundImg = "url(/../../images/graveyard.gif)";
 
-    $scope.gold = 0;
+    $rootScope.gold = 0;
     $scope.enemies = $rootScope.enemies;
     $scope.difficulty = $rootScope.difficulty;
 
@@ -20,6 +20,7 @@ angular.module('app.battlefield', [])
     };
 
     $scope.store = function() {
+      console.log($location);
       $location.path('/store').replace();
     };
 
@@ -28,23 +29,43 @@ angular.module('app.battlefield', [])
     //   console.log($rootScope.name);
     };
 
+    $scope.explode=function (ind,testVal, $location, $scope){
 
-
-    $scope.fade = function(index, time,x) {
-
-      $timeout(function ($scope) {
-    
-        if ($scope.enemies[index].x === x) {
-
-          $rootScope.health = $rootScope.health - 1;
-          $scope.enemies[index].url = "/../../images/explodeOnce.gif";
-          $timeout(function ($scope) {
-            if ($scope.enemies[index].x === x) {
-              $scope.enemies.splice(index, 1);
-            }
-          }, 500);
-          
+      if ($scope.enemies[ind].x === testVal) {
+        
+        $rootScope.health = $rootScope.health - 1;
+        $scope.enemies[ind].url = "/../../images/explodeOnce.gif";
+        if ($rootScope.health < 0) {
+          $scope.gameover();
         }
+      }  
+    };
+
+    $scope.remove = function (ind, testVal){
+
+      if ($scope.enemies[ind].x === testVal) {
+        
+        $scope.enemies.splice(ind, 1);
+      }  
+    };
+
+    $scope.gameover = function(){
+      $location.path('/gameover').replace();
+    };
+
+
+
+
+
+    $scope.fade = function(index, time, x, $location) {
+      var setScope=$scope;
+      var loc= $location;
+      $timeout(function () {
+        $scope.explode(index, x, loc, setScope );
+
+        $timeout(function () { 
+          $scope.remove(index, x, setScope);
+        }, 500);
 
       }, (2 + time) * 1000);
 
@@ -65,7 +86,7 @@ angular.module('app.battlefield', [])
       // $scope.once(x,y,'/../../images/bop.gif');
       $scope.enemies[index].url = "/../../images/bop.gif";
       if ($scope.enemies[index].alive) {
-        $scope.gold++;
+        $rootScope.gold++;
       }
       $scope.enemies[index].alive = false;
       $timeout(function () {

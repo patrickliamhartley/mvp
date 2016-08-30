@@ -73,6 +73,62 @@ body{
 
 }
 
+#outDoor{
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  left:400px;
+  bottom:30px;
+  background-image: url("/../images/outDoor.gif");
+  background-size: cover;
+  font-family: Pixel Azure Bonds;
+  color: yellow;
+  font-size: 12px;
+}
+#armor{
+  margin: 0 0 0 100px;
+  width: 95px;
+}
+#potion{
+  margin:0 0 0 30px;
+  width: 90px;
+}
+#row1{
+  width:300px;
+  height: 100px;
+}
+#row2{
+  width:300px;
+  height: 100px;
+}
+#row3{
+  width:300px;
+  height: 100px;
+}
+
+#shelf{
+  position: absolute;
+  left:700px;
+  bottom:100px;
+  width:300px;
+  height: 300px;
+  background-image: url("/../images/bookshelf.png");
+  background-size: cover;
+}
+
+#store{
+  text-align: center;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.st{
+  color:white;
+  font-size: 30px;
+}
+
 #zap{
   position: absolute;
 }
