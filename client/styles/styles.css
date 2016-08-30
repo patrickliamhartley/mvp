@@ -10,20 +10,72 @@ body{
 }
 
 #banner{
+  margin-left: 100px;
+  margin-right: auto;
+  margin-top: 20px
+}
+
+#inBox{
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px
+  height:300px;
+  width:500px;
 }
 
+#heroSelect{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Pixel Azure Bonds;
+  font-size:25px;
+}
+
+#difficulty{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Pixel Azure Bonds;
+  font-size:25px;
+}
 
 #nameIn{
-  font-family: Pixel Azure Bonds;
-  size:24px;
-}
 
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Pixel Azure Bonds;
+  font-size:25px;
+}
+#start{
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Pixel Azure Bonds;
+  font-size:20px;
+
+}
 #enemy{
   width: 50px
 }
 #enemybox{
   position: absolute;
+}
+
+.intro{
+  text-align: center;
+  font-size: 22px;
+}
+
+.a{
+  color:black;
+}
+
+.b{
+  color:grey;
+}
+
+.c{
+  color:white;
 }

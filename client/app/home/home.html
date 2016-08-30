@@ -2,13 +2,15 @@
   <h1 ng-controller="HomeController"></h1>
   <img id="banner" src="/../../images/bonestorm.png"/>
     <div id="inBox">
-      <p>WHAT IS YOUR NAME WEARY TRAVELER?</p>
+      <p class="intro a">WHAT IS YOUR NAME WEARY TRAVELER?</p>
       <input id="nameIn" ng-model = "name" type="text" name="name"></input>
+      <p class="intro b">WHAT DO YOU LOOK LIKE?</p>
       <select id="heroSelect" ng-model="heroClass">
         <option selected="selected" disabled="disabled">CHOOSE YOUR CLASS</option>
         <option value="barb">MUSCLY SWORD MAN</option>
         <option value="wiz">OLD TIMEY WIZARD</option>
       </select>
+      <p class="intro c">HOW MUCH CAN YOU HANDLE?</p>
       <select id="difficulty" ng-model="difficulty">
         <option selected="selected" disabled="disabled">CHOOSE YOUR DIFFICULTY</option>
         <option value="3">SQUIRE'S FROLIC</option>
@@ -16,7 +18,7 @@
         <option value="10">KNIGHT'S EPIC QUEST</option>
         <option value="20">DARKEST DEPTHTS OF HELL</option>
       </select>
+      <button id="start" ng-click= "add(name)" >I AM READY TO FIGHT</button>
     </div>
-  <button ng-click= "add(name)" >I AM READY TO FIGHT</button>
 
 </div>
