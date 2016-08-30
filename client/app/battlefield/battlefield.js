@@ -10,6 +10,7 @@ angular.module('app.battlefield', [])
         $scope.enemies[i].y = Math.random() * $rootScope.height;
         $scope.enemies[i].time = Math.random() * 5;
       }
+      $scope.$emit('refresh');
 
     };
 
@@ -19,9 +20,11 @@ angular.module('app.battlefield', [])
     };
 
     $scope.fade = function(key, time) {
+      
       $timeout(function () {
         key.hidden = true;
       }, time*1000);
+      
     };
 
     $scope.kill = function (key) {
@@ -33,6 +36,7 @@ angular.module('app.battlefield', [])
     };
 
     $interval(function (){
+
       $scope.enemies= [];
       for (var i = 0; i < $scope.difficulty; i ++) {
         $scope.enemies.push({
@@ -44,5 +48,11 @@ angular.module('app.battlefield', [])
       $scope.place();
       console.log("placing");
     }, 5000);
+
+    $scope.$on('refresh', function () {
+      for (var i = 0; i < $scope.difficulty; i ++) {
+        $scope.fade($scope.enemies[i],$scope.enemies[i].time);
+      }  
+    });
     
   }]);  
