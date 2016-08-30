@@ -5,6 +5,8 @@ angular.module('app.battlefield', [])
     $rootScope.gold = 0;
     $scope.enemies = $rootScope.enemies;
     $scope.difficulty = $rootScope.difficulty;
+  
+
 
 
     $scope.place = function () {
@@ -12,9 +14,9 @@ angular.module('app.battlefield', [])
         $scope.enemies[i].x = Math.random() * $rootScope.width;
         $scope.enemies[i].y = Math.random() * $rootScope.height;
         $scope.enemies[i].time = Math.random() * $rootScope.waveTimer;
-        $scope.enemies[i].alive=true;
-        $scope.enemies[i].url="/../../images/walkskel.gif";
-        $scope.fade(i, $scope.enemies[i].time,$scope.enemies[i].x);
+        $scope.enemies[i].alive = true;
+        $scope.enemies[i].url = $rootScope.defaultEnemy;
+        $scope.fade(i, $scope.enemies[i].time, $scope.enemies[i].x);
       }
 
     };

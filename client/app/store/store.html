@@ -3,7 +3,7 @@
   <div id="store">
   <h1 id="shoper" class="st">WELCOME {{name}}!</h1>
     <p class="st">PLEASE BROWSE MY WEARS.</p>
-    <p class="st">YOU HAVE {{gold}} GOLD</p>
+    <p class="st">YOU HAVE {{gold}} GOLD AND {{health}} HEALTH</p>
 
   </div>
 
@@ -12,11 +12,13 @@
     <div id="row1">
     </div>
     <div id="row2">
-      <img id="potion" src="/../../images/potion.png">
+      <img id="potion" ng-click="potion()" src="/../../images/potion.png">
+
+      <img id="wand" ng-hide="whide" ng-click="wand()" src="/../../images/wand.gif">
       
     </div>
     <div id="row3">
-      <img id="armor" ng-click="armor()" src="/../../images/armor.png">
+      <img id="armor" ng-hide="ahide" ng-click="armor()" src="/../../images/armor.png">
 
     </dir>
 

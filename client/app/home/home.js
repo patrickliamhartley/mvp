@@ -1,7 +1,7 @@
 angular.module('app.home',[])
   .controller('HomeController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
     $rootScope.backgroundImg = "url(/../../images/sunset.png)";
-
+    $rootScope.defaultEnemy = "/../../images/walkskel.gif";
 
     $scope.add = function(val) {
       $rootScope.name = val;
