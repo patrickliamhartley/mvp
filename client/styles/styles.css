@@ -1,3 +1,6 @@
 #enemy{
   width: 50px
 }
+#enemybox{
+  position: absolute;
+}

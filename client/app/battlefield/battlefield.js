@@ -1,7 +1,8 @@
 angular.module('app.battlefield', [])
-  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout,key) {
+  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', function ($scope, $rootScope, $timeout, $interval, key) {
     $scope.gold = 0;
     $scope.enemies = $rootScope.enemies;
+    $scope.difficulty = $rootScope.difficulty;
 
     $scope.place = function () {
       for (var i = 0; i < $rootScope.difficulty; i ++) {
@@ -17,10 +18,10 @@ angular.module('app.battlefield', [])
     //   console.log($rootScope.name);
     };
 
-    $scope.fade = function() {
+    $scope.fade = function(key, time) {
       $timeout(function () {
-        $scope.hidden = true;
-      }, 5000);
+        key.hidden = true;
+      }, time*1000);
     };
 
     $scope.kill = function (key) {
@@ -30,5 +31,18 @@ angular.module('app.battlefield', [])
       $scope.gold++;
       console.log($scope.enemies);
     };
+
+    $interval(function (){
+      $scope.enemies= [];
+      for (var i = 0; i < $scope.difficulty; i ++) {
+        $scope.enemies.push({
+          x: null,
+          y: null,
+          time: null
+        });
+      }
+      $scope.place();
+      console.log("placing");
+    }, 5000);
     
   }]);  

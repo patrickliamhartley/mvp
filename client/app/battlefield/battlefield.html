@@ -1,9 +1,9 @@
-<div ng-model ="app.battlefield" ng-init="place()">
-  <h1 ng-controller="BattlefieldController">BONESTORM II</h1>
+<div ng-model ="app.battlefield" ng-controller="BattlefieldController"  ng-init="place()">
+  <h1 >BONESTORM II</h1>
   <p>PREPARE FOR BATTLE!</p>
 
-  <div ng-repeat="key in enemies track by $index" ng-hide="key.hidden" ng-click="kill(key)" ng-init="fade()">
-    <image id="enemy" src="/../../images/enemy.png"/>
+  <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-init="fade(key,key.time)" ng-repeat="key in enemies track by $index" ng-hide="key.hidden"  ng-click="kill(key)" >
+    <image  id="enemy" src="/../../images/enemy.png"/>
   </div>
 
 
