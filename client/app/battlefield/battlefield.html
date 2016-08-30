@@ -1,18 +1,18 @@
 <div ng-model ="app.battlefield" ng-controller="BattlefieldController"  ng-init="place()">
-  <h1 >BONESTORM II</h1>
-  <p>PREPARE FOR BATTLE!</p>
 
   <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-repeat="key in enemies track by $index"  ng-click="kill($index)" >
-    <image  id="enemy" src="/../../images/enemy.png"/>
+    <image  id="enemy" src="/../../images/walkskel.gif"/>
   </div>
 
 
-  
-  <div id="heroName" ng-init="showName()">{{name}}</div>
+  <div id="heroBox">
+    
 
-  <image id="hero" src="/../../images/hero.png">
-  <div>
-    <p>YOUR GOLD: {{gold}}</p>
-    <p>YOUR HEALTH: {{health}}</p>
+    <image id="hero" src="/../../images/warwalk.gif">
+    <div id="heroName" ng-init="showName()">{{name}}</div>
+    <div id="goldhealth">
+      <p class="gold">YOUR GOLD: {{gold}}</p>
+      <p class="health">YOUR HEALTH: {{health}}</p>
+    </div>
   </div>
 </div>

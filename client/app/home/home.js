@@ -1,6 +1,6 @@
 angular.module('app.home',[])
   .controller('HomeController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
-    $rootScope.backgroundImg = "url(/../images/sunset.png)";
+    $rootScope.backgroundImg = "url(/../../images/sunset.png)";
 
 
     $scope.add = function(val) {
