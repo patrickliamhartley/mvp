@@ -1,5 +1,5 @@
 angular.module('app.battlefield', [])
-  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', function ($scope, $rootScope, $timeout, $interval, key) {
+  .controller('BattlefieldController', ['$scope', '$rootScope', '$timeout', '$interval', '$location', function ($scope, $rootScope, $timeout, $interval, key, $location) {
     $rootScope.backgroundImg = "url(/../../images/graveyard.gif)";
 
     $scope.gold = 0;
@@ -14,6 +14,10 @@ angular.module('app.battlefield', [])
         $scope.enemies[i].time = Math.random() * $rootScope.waveTimer;
       }
 
+    };
+
+    $scope.store = function() {
+      $location.path('/store').replace();
     };
 
     $scope.showName = function() {
@@ -37,9 +41,9 @@ angular.module('app.battlefield', [])
     };
 
     $scope.once= function(x,y,imgPath){
-      var p = angular.element("<img id=zap style=top:"+y+"; left:"+x+" src="+imgPath+">")[0]; // now it's node
+      var p = angular.element("<img id=zap style=top:"+y+"px; left:"+x+"px src="+imgPath+">")[0]; // now it's node
       document.body.appendChild(p);
-      
+
 
     };
 

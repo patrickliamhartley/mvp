@@ -9,7 +9,7 @@ angular.module('app.home',[])
       $rootScope.waveTimer= 10 - ($scope.difficulty / 3);
       $rootScope.difficulty=$scope.difficulty;
       $rootScope.height = window.innerHeight; 
-      $rootScope.health= 100;
+      
       $rootScope.width = window.innerWidth;
       for (var i = 0; i <$scope.difficulty; i ++){
         $rootScope.enemies.push({
@@ -18,6 +18,16 @@ angular.module('app.home',[])
           time: null
         });
       }
+      if ($scope.heroClass === "barb") {
+        $rootScope.heroImg = "/../../images/warwalk.gif";
+        $rootScope.health = 100;
+        $rootScope.enemySize = 90;
+      } else if ($scope.heroClass === "wiz") {
+        $rootScope.heroImg = "/../../images/wiz3.gif";
+        $rootScope.health = 75;
+        $rootScope.enemySize = 150;
+      }
+      
 
       console.log($rootScope.name, $rootScope.difficulty, $rootScope.enemies);
       $location.path('/battlefield').replace();

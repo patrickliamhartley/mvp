@@ -1,14 +1,19 @@
 <div ng-model ="app.battlefield" ng-controller="BattlefieldController"  ng-init="place()">
 
   <div id="enemybox" style="top:{{key.y}}px; left:{{key.x}}px" ng-repeat="key in enemies track by $index"  ng-click="kill($index)" >
-    <image  id="enemy" src="/../../images/walkskel.gif"/>
+    <image  id="enemy" style="width:{{enemySize}}px;" src="/../../images/walkskel.gif"/>
   </div>
 
 
   <div id="heroBox">
     
 
-    <image id="hero" src="/../../images/warwalk.gif">
+    <image id="hero" src={{heroImg}}>
+    <div id="itemBar">
+      <img src="{{itemImg[0]}}">
+      <button ng-click="store()" id="storeDoor">STORE</button>
+      <img src="{{itemImg[1]}}">
+    </div>
     <div id="heroName" ng-init="showName()">{{name}}</div>
     <div id="goldhealth">
       <p class="gold">YOUR GOLD: {{gold}}</p>

@@ -77,21 +77,40 @@ body{
   position: absolute;
 }
 
+#itemBar{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 50px;
+}
+
+
 #hero{
   z-index: -100;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   width:100px;
 }
 #enemy{
+  position: absolute;
   z-index: 100;
-  width: 70px
+
 }
 #enemybox{
   position: absolute;
 }
-
+#storeDoor{
+  font-family: Pixel Azure Bonds;
+  color: yellow;
+  font-size: 8px;
+  text-align: left;
+  color:brown;
+  width: 45px;
+  height: 50px;
+  background-image: url("/../images/door.png");
+  background-size: cover;
+}
 .intro{
   text-align: center;
   font-size: 22px;
@@ -110,11 +129,13 @@ body{
 }
 
 .gold{
+  margin: 0 0 0 0;
   z-index: -100;
   color:gold;
 }
 
 .health{
+  margin: 0 0 0 0;
   z-index: -100;
   color:blue;
 }
