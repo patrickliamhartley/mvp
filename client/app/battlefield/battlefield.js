@@ -11,6 +11,8 @@ angular.module('app.battlefield', [])
 
     $scope.place = function () {
       for (var i = 0; i < $rootScope.difficulty; i ++) {
+        $scope.enemies[i]={};
+
         $scope.enemies[i].x = Math.random() * $rootScope.width;
         $scope.enemies[i].y = Math.random() * $rootScope.height;
         $scope.enemies[i].time = Math.random() * $rootScope.waveTimer;
@@ -31,8 +33,9 @@ angular.module('app.battlefield', [])
     //   console.log($rootScope.name);
     };
 
-    $scope.explode=function (ind,testVal, $location, $scope){
+    $scope.explode = function (ind, testVal) {
 
+      console.log($scope.enemies[ind].x,testVal);
       if ($scope.enemies[ind].x === testVal) {
         
         $rootScope.health = $rootScope.health - 1;
@@ -43,15 +46,15 @@ angular.module('app.battlefield', [])
       }  
     };
 
-    $scope.remove = function (ind, testVal){
+    $scope.remove = function (ind, testVal) {
 
       if ($scope.enemies[ind].x === testVal) {
-        
-        $scope.enemies.splice(ind, 1);
+        console.log('removing');
+        $scope.enemies[ind] = 0;
       }  
     };
 
-    $scope.gameover = function(){
+    $scope.gameover = function() {
       $location.path('/gameover').replace();
     };
 
@@ -59,14 +62,16 @@ angular.module('app.battlefield', [])
 
 
 
-    $scope.fade = function(index, time, x, $location) {
-      var setScope=$scope;
-      var loc= $location;
+    $scope.fade = function(index, time, x) {
       $timeout(function () {
-        $scope.explode(index, x, loc, setScope );
+        $scope.$apply(function () {
+          $scope.explode(index, x );
+        });
 
-        $timeout(function () { 
-          $scope.remove(index, x, setScope);
+        $timeout(function () {
+          $scope.$apply(function() { 
+            $scope.remove(index, x);
+          });  
         }, 500);
 
       }, (2 + time) * 1000);
@@ -92,7 +97,7 @@ angular.module('app.battlefield', [])
       }
       $scope.enemies[index].alive = false;
       $timeout(function () {
-        $scope.enemies.splice(index, 1);
+        $scope.enemies[index]=0;
 
       }, 500);
 
@@ -104,26 +109,12 @@ angular.module('app.battlefield', [])
 
     $interval(function () {
      
-      // $rootScope.health= $rootScope.health - $scope.enemies.length;
-      $scope.enemies = [];
-      for (var i = 0; i < $scope.difficulty; i ++) {
-        $scope.enemies.push({
-          x: null,
-          y: null,
-          time: null,
 
-        });
-      }
+
       $scope.place();
       $scope.$emit('refresh');
       console.log("placing");
     }, $rootScope.waveTimer * 1000);
 
-    // $scope.$on('refresh', function () {
-    //   console.log("refresh",$scope.enemies.length);
-    //   for (var i = 0; i < $scope.enemies.length; i ++) {
-    //     $scope.fade(i, $scope.enemies[i].time);
-    //   }  
-    // });
     
   }]);  

@@ -11,13 +11,7 @@ angular.module('app.home',[])
       $rootScope.height = window.innerHeight; 
       
       $rootScope.width = window.innerWidth;
-      for (var i = 0; i <$scope.difficulty; i ++){
-        $rootScope.enemies.push({
-          x: null,
-          y: null,
-          time: null
-        });
-      }
+
       if ($scope.heroClass === "barb") {
         $rootScope.heroImg = "/../../images/warwalk.gif";
         $rootScope.health = 100;
