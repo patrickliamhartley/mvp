@@ -6,16 +6,18 @@ angular.module('app.store', [])
     $rootScope.itemImg = [];
     // $scope.gold = $rootScope.gold;
 
-    $scope.armor = function(){
+    $scope.armor = function() {
       $rootScope.itemImg.push("/../../images/armor.png");
       $scope.ahide = true;
       $rootScope.gold = $rootScope.gold - 50;
+      $rootScope.health = $rootScope.health + 50;
     };
 
     $scope.wand = function(){
       $rootScope.itemImg.push("/../../images/wand.gif");
       $scope.whide = true;
       $rootScope.gold = $rootScope.gold - 100;
+      $rootScope.enemySize = 300;
       $rootScope.defaultEnemy = "/../../images/frog.gif";
     };
 

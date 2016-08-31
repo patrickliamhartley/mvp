@@ -38,7 +38,7 @@ angular.module('app.battlefield', [])
       console.log($scope.enemies[ind].x,testVal);
       if ($scope.enemies[ind].x === testVal) {
         
-        $rootScope.health = $rootScope.health - 1;
+        $rootScope.health = $rootScope.health - 5;
         $scope.enemies[ind].url = "/../../images/explodeOnce.gif";
         if ($rootScope.health < 0) {
           $scope.gameover();
@@ -87,10 +87,7 @@ angular.module('app.battlefield', [])
     };
 
     $scope.kill = function (index) {
-      // var x =$scope.enemies[index].x;
-      // var y =$scope.enemies[index].y;
-      // console.log(x,y);
-      // $scope.once(x,y,'/../../images/bop.gif');
+
       $scope.enemies[index].url = "/../../images/bop.gif";
       if ($scope.enemies[index].alive) {
         $rootScope.gold++;
@@ -108,8 +105,6 @@ angular.module('app.battlefield', [])
     };
 
     $interval(function () {
-     
-
 
       $scope.place();
       $scope.$emit('refresh');

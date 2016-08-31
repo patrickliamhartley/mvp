@@ -227,10 +227,30 @@ body{
   font-size: 40px;
 
 }
+
+#tree1{
+pointer-events: none;
+z-index: 200;
+position: absolute;
+width: 400px;
+right:100px;
+bottom:-60px;
+}
+#tree2{
+pointer-events: none;
+z-index: 200;
+position: absolute;
+width: 400px;
+left:100px;
+bottom:-60px;
+}
 .intro{
   text-align: center;
   font-size: 22px;
 }
+
+
+
 
 .go{
   text-align: center;
@@ -259,5 +279,5 @@ body{
 .health{
   margin: 0 0 0 0;
   z-index: -100;
-  color:blue;
+  color:red;
 }
